@@ -9,7 +9,7 @@ public class DatabaseHandler extends SQLException{
 
     public static Connection con;
     private static String driver = "com.mysql.cj.jdbc.Driver";
-    private static String url = "jdbc:mysql://localhost/DB_UAS_1124055";
+    private static String url = "jdbc:mysql://localhost/db_uas_1124055";
     private static String username = "root";
     private static String password = "";
 

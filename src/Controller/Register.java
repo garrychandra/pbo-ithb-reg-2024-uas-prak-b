@@ -9,7 +9,7 @@ import Modul.Customer;
 
 public class Register {
     public static int checkUniqueTelno(String telno) {
-        String query = "select * from customer where telno = ?";
+        String query = "select * from customer where phone = ?";
         try {
             PreparedStatement st = DatabaseHandler.connect().prepareStatement(query);
 
@@ -31,12 +31,13 @@ public class Register {
 
     public static boolean register(Customer customer){
         try {
-            String query = "INSERT INTO customer VALUES (?,?,?,?)";
+            String query = "INSERT INTO customer VALUES (?,?,?,?,?)";
             PreparedStatement st = DatabaseHandler.connect().prepareStatement(query);
-            st.setString(1, customer.getPassword());
-            st.setString(2, customer.getName());
-            st.setString(3,customer.getAddress());
-            st.setString(4, customer.getPhone());
+            st.setInt(1, 0);
+            st.setString(2, customer.getPassword());
+            st.setString(3, customer.getName());
+            st.setString(4,customer.getAddress());
+            st.setString(5, customer.getPhone());
             st.executeUpdate();
 
             JOptionPane.showMessageDialog(null, "Registrasi Berhasil", "Registrasi", JOptionPane.INFORMATION_MESSAGE);
@@ -46,6 +47,7 @@ public class Register {
             
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Error in Input Data", "Error", JOptionPane.ERROR_MESSAGE);
+            e.printStackTrace();
         }
         DatabaseHandler.disconnect();
         return false;

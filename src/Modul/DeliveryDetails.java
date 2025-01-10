@@ -1,6 +1,6 @@
 package Modul;
 
-import java.util.Date;
+import java.sql.Date;
 
 public class DeliveryDetails {
     private int id;
@@ -10,6 +10,8 @@ public class DeliveryDetails {
     private String evidence;
     private Date date;
     private String updated_by;
+
+    public DeliveryDetails(){}
 
     public DeliveryDetails(int id, int transaction_id, Status_Enum status, String current_position, String evidence,
             Date date, String updated_by) {
@@ -64,6 +66,4 @@ public class DeliveryDetails {
     public void setUpdated_by(String updated_by) {
         this.updated_by = updated_by;
     }
-
-    
 }

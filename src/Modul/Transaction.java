@@ -1,6 +1,6 @@
 package Modul;
 
-import java.util.Date;
+import java.sql.Date;
 
 public class Transaction {
     private int id;
@@ -12,6 +12,8 @@ public class Transaction {
     private String receipt_name;
     private String receipt_address;
     private String receipt_phone;
+
+    public Transaction(){}
 
     public Transaction(int id, int customer_id, String delivery_type, int expected_weight, int total_cost,
             Date created_at, String receipt_name, String receipt_address, String receipt_phone) {

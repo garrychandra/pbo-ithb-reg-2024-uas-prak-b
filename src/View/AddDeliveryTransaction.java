@@ -7,7 +7,8 @@ import java.util.ArrayList;
 
 import javax.swing.*;
 
-import Modul.Customer;
+import Modul.Transaction;
+
 
 public class AddDeliveryTransaction {
     JFrame frame;
@@ -39,7 +40,7 @@ public class AddDeliveryTransaction {
         panel.setBackground(new Color(240, 248, 255)); // Light blue background
 
         JLabel titleLabel = new JLabel("Tambah Transaksi Pengiriman", SwingConstants.CENTER);
-        titleLabel.setBounds(50, 10, 300, 30);
+        titleLabel.setBounds(25, 10, 350, 30);
         titleLabel.setFont(new Font("Arial", Font.BOLD, 22));
         titleLabel.setForeground(new Color(0, 102, 204));
         panel.add(titleLabel);
@@ -115,9 +116,17 @@ public class AddDeliveryTransaction {
                     } else if (Integer.parseInt(weight.getText().trim()) <= 0) {
                         JOptionPane.showMessageDialog(frame, "Weight can't be 0 or negative");
                     } else {
-                        //bikin database category + fee
-                        //cost = fee * weight
-                        //masukan database
+                        int cost = Controller.TransactionSection.getFee(typeCombo.getSelectedItem().toString());
+                        int exweight = Integer.parseInt(weight.getText());
+                        Transaction transaction = new Transaction();
+                        transaction.setCreated_at(new java.sql.Date(System.currentTimeMillis()));
+                        transaction.setReceipt_name(name.getText());
+                        transaction.setReceipt_address(address.getText());
+                        transaction.setReceipt_phone(telNo.getText());
+                        transaction.setExpected_weight(exweight);
+                        transaction.setTotal_cost(cost * exweight);
+                        transaction.setDelivery_type((String)typeCombo.getSelectedItem());
+                        Controller.TransactionSection.insertTransaction(transaction);
                         frame.dispose();
                         new MenuUtama();
                     }

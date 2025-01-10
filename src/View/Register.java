@@ -99,7 +99,7 @@ public class Register {
                         address.getText().isEmpty() || name.getText().isEmpty()) {
                     JOptionPane.showMessageDialog(frame, "Please fill all required fields.");
                 } else if (Controller.Register.checkUniqueTelno(telNo.getText()) == 0) {
-                    JOptionPane.showMessageDialog(frame, "Username is already taken!");
+                    JOptionPane.showMessageDialog(frame, "Phone is already registered!");
                 } else {
                     Customer customer = new Customer(
                         -1,

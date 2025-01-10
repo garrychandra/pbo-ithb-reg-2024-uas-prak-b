@@ -87,7 +87,7 @@ public class Login {
         submit.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                Controller.Login.loginTokoSidia(username.getText(), new String(password.getPassword()));
+                Controller.Login.login(telno.getText(), new String(password.getPassword()));
                 frame.dispose();
             }
         });

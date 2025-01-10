@@ -18,8 +18,8 @@ public class MenuUtama {
         int screenWidth = screenSize.width; // Screen width
         int screenHeight = screenSize.height; // Screen height
 
-        final int FRAME_WIDTH = 200; // Set frame width
-        final int FRAME_HEIGHT = 300; // Set frame height
+        final int FRAME_WIDTH = 300; // Set frame width
+        final int FRAME_HEIGHT = 400; // Set frame height
 
         int start_x = screenWidth / 2 - (FRAME_WIDTH / 2); // Center frame horizontally
         int start_y = screenHeight / 2 - (FRAME_HEIGHT / 2); // Center frame vertically
@@ -31,20 +31,25 @@ public class MenuUtama {
         frame.setResizable(false);
 
         panel = new JPanel();
-        panel.setLayout(new GridLayout(4, 1));
+        panel.setLayout(new GridLayout(5, 1));
         panel.setBounds(0, 0, FRAME_WIDTH, FRAME_HEIGHT);
         panel.setBackground(new Color(240, 248, 255)); // Light blue background
 
         JButton loginButton = createButton("Login",Color.blue);
         JButton registerButton = createButton("Registrasi", Color.green);
         JButton tambahTransaksi = createButton("Tambah Transaksi", Color.GRAY);
+        JButton tambahDetailTransaksi = createButton("Tambah Detail", Color.magenta);
         JButton historyButton = createButton("History Pengiriman", Color.red);
+
+        
         
         panel.add(loginButton);
         panel.add(registerButton);
         panel.add(tambahTransaksi);
+        panel.add(tambahDetailTransaksi);
         panel.add(historyButton);
-
+        
+    
         loginButton.addActionListener(e -> {
             frame.dispose();
             new Login();
@@ -58,6 +63,16 @@ public class MenuUtama {
         tambahTransaksi.addActionListener(e -> {
             frame.dispose();
             new AddDeliveryTransaction();
+        });
+
+        tambahDetailTransaksi.addActionListener(e -> {
+            frame.dispose();
+            new DetailTransaction();
+        });
+
+        historyButton.addActionListener(e -> {
+            frame.dispose();
+            new TransactionHistory();
         });
 
         frame.add(panel);
