@@ -80,30 +80,30 @@ public class AddDeliveryTransaction {
         weight.setBorder(BorderFactory.createLineBorder(Color.GRAY));
         panel.add(weight);
 
-        
-        //ArrayList<String> category = Controller.TransactionSection.getCategory();
-        String category[] = {"a","b"};
+        JLabel categoryL = new JLabel("Kategori:");
+        categoryL.setBounds(50, 320, 150, 20);
+        panel.add(categoryL);
 
-        JComboBox typeCombo = new JComboBox(category);
+        ArrayList<String> category = Controller.TransactionSection.getCategory();
+
+        JComboBox typeCombo = new JComboBox(category.toArray());
         typeCombo.setSelectedIndex(0);
-        typeCombo.setBounds(50,320,300,20);
+        typeCombo.setBounds(50,345,300,30);
         panel.add(typeCombo);
 
         JButton submit = new JButton("Simpan");
-        submit.setBounds(220, 350, 100, 30);
+        submit.setBounds(220, 400, 100, 30);
         submit.setBackground(new Color(0, 102, 204));
         submit.setForeground(Color.WHITE);
         submit.setFocusPainted(false);
         panel.add(submit);
 
         JButton backButton = new JButton("Back");
-        backButton.setBounds(70, 350, 100, 30);
+        backButton.setBounds(70, 400, 100, 30);
         backButton.setBackground(new Color(220, 20, 60)); 
         backButton.setForeground(Color.WHITE);
         backButton.setFocusPainted(false);
         panel.add(backButton);
-
-
 
         submit.addActionListener(new ActionListener() {
             @Override
